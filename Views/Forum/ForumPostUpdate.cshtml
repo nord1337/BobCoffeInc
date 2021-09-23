@@ -1,0 +1,28 @@
+﻿@model BobCoffeInc.Models.ForumModels.Post
+
+<tr>
+    <td class="author-col">
+        <div>Создано: <a href="#"> @ViewBag.Post.Author</a></div>
+
+    </td>
+    <td class="post-col d-lg-flex justify-content-lg-between">
+        <div><span class="font-weight-bold">Тема топика:</span> @ViewBag.Post.Title </div>
+
+        <div><span class="font-weight-bold">Дата поста: </span>@ViewBag.Post.Created</div>
+    </td>
+
+</tr>
+<tr>
+    <td>
+
+        <div><span class="font-weight-bold">Сообщение: </span><br></div>
+
+    </td>
+    <td>
+        <p>
+            @ViewBag.Post.Content
+        <p />
+
+    </td>
+
+</tr>

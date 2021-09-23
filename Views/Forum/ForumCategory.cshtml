@@ -1,0 +1,195 @@
+﻿
+@{
+    ViewBag.Title = "ForumCategory";
+}
+
+
+<div class="container my-2">
+    <nav class="breadcrumb">
+        <span class="breadcrumb-item active">Все категории</span>
+    </nav>
+    <div class="row">
+        <div class="col-12 col-xl-9">
+            <h2 class="h4 text-white bg-dark mt-1 mb-0 p-4 rounded-top rounded-bottom"><a href="@Url.Action("ForumCategoryOverview","Forum",new { title="Американо" })">Американо</a></h2>
+            <table class="table-striped table-bordered table-hover ">
+                <thead class="table-light">
+                    <tr>
+                        <th scope="col" class="forum-col">Последние топики</th>
+                        <th scope="col">Ответов</th>
+                        <th scope="col" class="last-post-col">Последнее сообщение</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for (int i=0;i< ViewBag.PostsAmericano.Count; i++)
+                    {
+                        if (i > 3) { break; }
+                        var Forum = ViewBag.PostsAmericano[i];
+                        <tr>
+                            <td>
+                                <h3 class="h5 mb-0"><a href="#0" class="text-uppercase"></a></h3>
+                                <p class="mb-0"><a href="@Url.Action("ForumPost","Forum",new { Id=Forum.Id,Title=Forum.Title})">@Forum.Title</a></p>
+                            </td>
+                            <td>
+                                <div>5</div>
+                            </td>
+                            <td>
+                                <div>10</div>
+                            </td>
+                            <td>
+                                <h4 class="h6 text-dark mb-0 font-weight-bold"><a href="#">Первое сообщение</a> </h4>
+                                <div>Оставлено пользователем:<br /><a href="#">@Forum.Author</a></div>
+                                <div><a>@Forum.Created.ToString()</a></div>
+                            </td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+
+            <h2 class="h4 text-white bg-dark mt-1 mb-0 p-4 rounded-top rounded-bottom"><a href="@Url.Action("ForumCategoryOverview","Forum",new { title="Эспрессо" })">Эспрессо</a></h2>
+            <table class="table-striped table-bordered table-hover ">
+                <thead class="table-light">
+                    <tr>
+                        <th scope="col" class="forum-col">Последние топики</th>
+                        <th scope="col">Ответов</th>
+                        <th scope="col" class="last-post-col">Последнее сообщение</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for (int i = 0; i < ViewBag.PostsEspresso.Count; i++)
+                    {
+                        if (i > 3) { break; }
+                        var Forum = ViewBag.PostsEspresso[i];
+                        <tr>
+                            <td>
+                                <h3 class="h5 mb-0"><a href="#0" class="text-uppercase"></a></h3>
+                                <p class="mb-0"><a href="@Url.Action("ForumPost","Forum",new { Id=Forum.Id,Title=Forum.Title})">@Forum.Title</a></p>
+                            </td>
+                            <td>
+                                <div>5</div>
+                            </td>
+                            <td>
+                                <div>10</div>
+                            </td>
+                            <td>
+                                <h4 class="h6 text-dark mb-0 font-weight-bold"><a href="#">Первое сообщение</a> </h4>
+                                <div>Оставлено пользователем:<br /><a href="#">@Forum.Author</a></div>
+                                <div><a>@Forum.Created.ToString()</a></div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+            <h2 class="h4 text-white bg-dark mt-1 mb-0 p-4 rounded-top rounded-bottom"><a href="@Url.Action("ForumCategoryOverview","Forum",new { title="Латте" })">Латте</a></h2>
+            <table class="table-striped table-bordered table-hover ">
+                <thead class="table-light">
+                    <tr>
+                        <th scope="col" class="forum-col">Последние топики</th>
+                        <th scope="col">Ответов</th>
+                        <th scope="col" class="last-post-col">Последнее сообщение</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for (int i = 0; i < ViewBag.PostsLatte.Count; i++)
+                    {
+                        if (i > 3) { break; }
+                        var Forum = ViewBag.PostsLatte[i];
+                        <tr>
+                            <td>
+                                <h3 class="h5 mb-0"><a href="#0" class="text-uppercase"></a></h3>
+                                <p class="mb-0"><a href="@Url.Action("ForumPost","Forum",new { Id=Forum.Id,Title=Forum.Title})">@Forum.Title</a></p>
+                            </td>
+                            <td>
+                                <div>5</div>
+                            </td>
+                            <td>
+                                <div>10</div>
+                            </td>
+                            <td>
+                                <h4 class="h6 text-dark mb-0 font-weight-bold"><a href="#">Первое сообщение</a> </h4>
+                                <div>Оставлено пользователем:<br /><a href="#">@Forum.Author</a></div>
+                                <div><a>@Forum.Created.ToString()</a></div>
+                            </td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+
+            <h2 class="h4 text-white bg-dark mt-1 mb-0 p-4 rounded-top rounded-bottom"><a href="@Url.Action("ForumCategoryOverview","Forum",new { title="Раф-кофе" })">Раф-кофе</a></h2>
+            <table class="table-striped table-bordered table-hover ">
+                <thead class="table-light">
+                    <tr>
+                        <th scope="col" class="forum-col">Последние топики</th>
+                        <th scope="col">Ответов</th>
+                        <th scope="col" class="last-post-col">Последнее сообщение</th>
+                    </tr>
+                </thead>
+                <tbody>
+                   
+                        @for (int i = 0; i < ViewBag.PostsRaf.Count; i++)
+                        {
+                            if (i >= 3) { break; }
+                            var Forum = ViewBag.PostsRaf[i];
+                        <tr>
+                            <td>
+                                <h3 class="h5 mb-0"><a href="#0" class="text-uppercase"></a></h3>
+                                <p class="mb-0"><a href="@Url.Action("ForumPost","Forum",new { Id=Forum.Id,Title=Forum.Title})">@Forum.Title</a></p>
+                            </td>
+                            <td>
+                                <div>5</div>
+                            </td>
+                            <td>
+                                <div>10</div>
+                            </td>
+                            <td>
+                                <h4 class="h6 text-dark mb-0 font-weight-bold"><a href="#">Первое сообщение</a> </h4>
+                                <div>Оставлено пользователем:<br /><a href="#">@Forum.Author</a></div>
+                                <div><a>@Forum.Created.ToString()</a></div>
+                            </td>
+                        </tr>
+                       }
+                        
+
+                    </tbody>
+            </table>
+
+            <h2 class="h4 text-white bg-dark mt-1 mb-0 p-4 rounded-top rounded-bottom"><a href="@Url.Action("ForumCategoryOverview","Forum",new { title="Прочее" })">Прочее</a></h2>
+            <table class="table-striped table-bordered table-hover ">
+                <thead class="table-light">
+                    <tr>
+                        <th scope="col" class="forum-col">Последние топики</th>
+                        <th scope="col">Ответов</th>
+                        <th scope="col" class="last-post-col">Последнее сообщение</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for (int i = 0; i < ViewBag.PostsOther.Count; i++)
+                    {
+                        if (i > 3) { break; }
+                        var Forum = ViewBag.PostsOther[i];
+                        <tr>
+                            <td>
+                                <h3 class="h5 mb-0"><a href="#0" class="text-uppercase"></a></h3>
+                                <p class="mb-0"><a href="@Url.Action("ForumPost","Forum",new { Id=Forum.Id,Title=Forum.Title})">@Forum.Title</a></p>
+                            </td>
+                            <td>
+                                <div>5</div>
+                            </td>
+                            <td>
+                                <div>10</div>
+                            </td>
+                            <td>
+                                <h4 class="h6 text-dark mb-0 font-weight-bold"><a href="#">Первое сообщение</a> </h4>
+                                <div>Оставлено пользователем:<br /><a href="#">@Forum.Author</a></div>
+                                <div><a>@Forum.Created.ToString()</a></div>
+                            </td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,114 @@
+﻿
+@{
+    ViewBag.Title = "ForumPost";
+}
+
+<div class="container my-2">
+    <nav class="breadcrumb">
+        <a href="Forum-category-overwiev.html" class="breadcrumb-item">Все категории</a>
+       <a href="@Url.Action("ForumCategory","Forum")" class="breadcrumb-item">@ViewBag.MainTitle</a>
+    <span class="breadcrumb-item active">@ViewBag.CoffeTitle</span>
+    </nav>
+    <div class="row">
+        <div class="col-12">
+            <h2 class="h4 text-white bg-dark mt-1 mb-0 p-4 rounded-top rounded-bottom">@ViewBag.MainTitle</h2>
+            <table class="table-striped table-bordered table-hover table-responsive-lg">
+                <thead class="table-light">
+                    <tr>
+                        <th scope="col">Авторы:</th>
+                        <th scope="col">Сообщения:</th>
+
+                    </tr>
+                </thead>
+                <tbody id="PostsCreated">
+                    @foreach (var Post in ViewBag.Posts)
+                    {
+
+                        <tr>
+                            <td class="author-col">
+                                <div>Создано: <a href="#"> @Post.Author</a></div>
+
+                            </td>
+                            <td class="post-col d-lg-flex justify-content-lg-between">
+                                <div><span class="font-weight-bold">Тема топика:</span> @Post.Title </div>
+
+                                <div><span class="font-weight-bold">Дата поста: </span>@Post.Created</div>
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td>
+
+                                <div><span class="font-weight-bold">Сообщение: </span><br></div>
+
+                            </td>
+                            <td>
+                                <p>
+                                    @Post.Content
+                                <p />
+
+                            </td>
+
+                        </tr>
+
+                    }
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+   
+
+
+    @if (User.Identity.IsAuthenticated)
+    {
+        using (Ajax.BeginForm("ForumPost", new AjaxOptions
+        {
+            UpdateTargetId = "PostsCreated",
+            InsertionMode = InsertionMode.InsertAfter
+        }))
+
+        {<div class="form-group">
+                <label for="comment">Ответить</label>
+                <textarea class="form-control" name="Content" rows="10" placeholder="Оставьте свое сообщение здесь." required></textarea>
+            </div>
+            <input type="hidden" name="Title" value="@ViewBag.CoffeTitle" />
+            <input type="hidden" name="Author" value="@User.Identity.Name" />
+            <input type="hidden" name="Created" value="@DateTime.Now" />
+            <input type="hidden" name="ForumCategoriesId" value="@ViewBag.Id" />
+            <button type="submit" class="btn btn-primary">Ответить</button>
+            <button type="reset" class="btn btn-danger">Обновить</button>
+        }
+    }
+    else
+    {
+        <h3>Для создания поста необходимо войти или зарегистрироваться.</h3>
+        <div class="d-lg-flex align-items-lg-center mb-3">
+        <a href='@Url.Action("Login", "Account")' class="btn btn-primary">Войти</a>
+        <a href='@Url.Action("Register", "Account")' class="btn btn-info">Зарегистрироваться</a>
+        </div>
+    }
+    @*<div>
+        <div class="d-lg-flex align-items-lg-center mb-3">
+            <form class="form-inline d-block d-sm-flex mr-2 mb-3 mb-lg-3">
+                <div class="form-group mr-2 mb-3 mb-md-0">
+                    <label for="email" class="mr-2">Email:</label>
+                    <input type="email" class="form-control" placeholder="Example@email.com" id="email" required>
+                </div>
+                <div class="form-group mr-2">
+                    <label for="password" class="mr-2">Password:</label>
+                    <input type="password" class="form-control" id="password" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Войти</button>
+                <span class="mr-2">или...</span>
+                <a href="registration.html" class="btn btn-success">Создать аккаунт</a>
+            </form>
+
+        </div>
+
+    </div>*@
+</div>
+

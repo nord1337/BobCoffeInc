@@ -1,0 +1,75 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - приложение ASP.NET</title>
+    @Scripts.Render("~/bundles/jquery") @*Скрипты jquery-2.2.4.js *@
+    <script src='@Url.Content("~/Scripts/jquery.unobtrusive-ajax.js")'></script>
+    <link rel="stylesheet" href="~/Content/bootstrap.min.css">
+    <link rel="stylesheet" href="~/Content/bootstrap.css">
+    @Scripts.Render("~/bundles/bootstrap") @*Скрипты bootstrap.js *@
+    @Scripts.Render("~/bundles/jq_ui") @*Отдельный бандл для скриптов jquery-ui.js *@
+    @Styles.Render("~/Content/jquicss") @*Отдельный бандл в отдельном каталоге для jquery-ui.css с картинками images *@
+    @Styles.Render("~/Content/css") @*site.css и bootstrap.css *@
+</head>
+<body>
+   
+
+
+
+
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+
+
+        <a class="navbar-brand" @*href="#"*@>@Html.ActionLink("BobCoffe inc.", "Index", "Home")</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample03" aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarsExample03">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item ">
+                    <a class="nav-link" href="#">My Profile <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="@Url.Action("ForumCategory","Forum")">Forum</a>
+                </li>
+                
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="dropdown03" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="bi bi-box-arrow-in-right"></i></a>
+                    <div class="dropdown-menu" aria-labelledby="dropdown03">
+                        @if (!User.Identity.IsAuthenticated)
+                        {<a class="dropdown-item text-black-50" href="@Url.Action("Login", "Account")">Login</a>
+
+                            <br />
+                            <a class="dropdown-item text-black-50" href="@Url.Action("Register", "Account")">Register</a>
+                        }
+                        else
+                        {
+                            <a class="dropdown-item text-black-50" href="@Url.Action("Logoff", "Account")">Sign out</a>
+                        }
+                    </div>
+                </li>
+
+            </ul>
+
+        </div>
+
+    </nav>
+
+    @RenderBody()
+    
+    <footer class="jumbotron blockquote-footer bg-light text-center text-lg-start ">
+
+        <div class="text-center p-3" style="background-color: #212529">
+            <a class="text-white-50">Студия дизайна Леонида <strike>Лебедева</strike> Бобко. Все права защищены.©</a>
+        </div>
+
+    </footer>
+    
+    
+
+</body>
+</html>
